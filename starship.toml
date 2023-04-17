@@ -1,0 +1,120 @@
+add_newline = true
+
+format = """
+$username\
+$hostname\
+$localip\
+$shlvl\
+$singularity\
+$kubernetes\
+$directory\
+$vcsh\
+$git_branch\
+$git_commit\
+${custom.gittag}\
+$git_state\
+$git_metrics\
+$git_status\
+$hg_branch\
+$docker_context\
+$package\
+$c\
+$cmake\
+$cobol\
+$daml\
+$dart\
+$deno\
+$dotnet\
+$elixir\
+$elm\
+$erlang\
+$golang\
+$haskell\
+$helm\
+$java\
+$julia\
+$kotlin\
+$lua\
+$nim\
+$nodejs\
+$ocaml\
+$perl\
+$php\
+$pulumi\
+$purescript\
+$python\
+$raku\
+$rlang\
+$red\
+$ruby\
+$rust\
+$scala\
+$swift\
+$terraform\
+$vlang\
+$vagrant\
+$zig\
+$buf\
+$nix_shell\
+$conda\
+$meson\
+$spack\
+$memory_usage\
+$aws\
+$gcloud\
+$openstack\
+$azure\
+$env_var\
+$crystal\
+$custom\
+$sudo\
+$cmd_duration\
+$line_break\
+$jobs\
+$battery\
+$time\
+$status\
+$container\
+$shell\
+$character"""
+
+[line_break]
+disabled = true
+
+[directory]
+style = 'bold purple'
+truncate_to_repo = false
+
+[git_branch]
+style = 'bold #bd93f9'
+symbol = " "
+
+[git_commit]
+only_detached = false
+format = '[ $hash]($style) '
+
+[git_status]
+style = 'bold yellow'
+format = '[$all_status$ahead_behind]($style)'
+untracked = '?${count} '
+staged = '+${count} '
+modified = '!${count} '
+stashed = ''
+renamed = '»${count} '
+deleted = '✘${count} '
+ahead = '⇡${count} '
+diverged = '⇡${ahead_count} ⇣${behind_count} '
+behind = '⇣${count} '
+
+[time]
+disabled = true
+
+[java]
+disabled = true
+
+[custom.gittag]
+command = "git tag --points-at HEAD"
+when = """ test "$(git tag --points-at HEAD)" != "" """
+style = "bold green"
+symbol = "笠"
+format = '[$symbol$output]($style) '
