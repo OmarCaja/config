@@ -116,5 +116,6 @@ disabled = true
 command = "git tag --points-at HEAD"
 when = """ test "$(git tag --points-at HEAD)" != "" """
 style = "bold green"
-symbol = "笠"
+symbol = "笠"
 format = '[$symbol$output]($style) '
+
