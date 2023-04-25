@@ -1,0 +1,17 @@
+name: Create an alias and save it in .zshrc
+command: "echo alias {{alias}}={{command}} >> ~/.zshrc"
+tags:
+  - zsh
+description: "Creates an alias and append it at the end of the .zshrc file."
+arguments:
+  - name: alias
+    description: The alias
+    default_alue: <alias>
+  - name: command
+    description: The command to be executed by the alias
+    defaukt_value: <command>
+author: Omar Caja García
+author_url: https://github.com/OmarCaja
+shells:
+  - zsh
+
