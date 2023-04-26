@@ -1,5 +1,5 @@
 name: Create an alias and save it in .zshrc
-command: "echo alias {{alias}}={{command}} >> ~/.aliases"
+command: "echo alias {{alias}}=\"{{command}}\" >> ~/.aliases"
 tags:
   - zsh
 description: "Creates an alias and append it at the end of the .zshrc file."
