@@ -1,0 +1,59 @@
+[alias]
+	# Checkout
+	co = checkout
+	nb = checkout -b
+
+	# Branches
+	b = branch -v
+	br = branch -r
+	ba = branch -a
+	bd = branch -d
+	bdf = branch -D
+	bdr = "!f() { git push origin :$1; }; f"
+	
+	# Add files
+	aa = add --all
+
+	# Commit
+	cm = commit -m
+	cam = !git add --all && git commit -m
+	amend = commit --amend
+	append = !git add --all && git commit --amend
+
+	# Fetch
+	f = fetch
+
+	# Push
+	ps = push
+	psf = push -f
+	psfl = push --force-with-lease
+
+	# Pull
+	pl = pull
+
+	# Merge
+	m = merge
+	ma = merge --abort
+	mc = merge --continue
+
+	# Rebase
+	reb = rebase
+	reba = rebase --abort
+	rebc = rebase --continue
+	rebo = rebase --onto
+
+	# Logs
+	lgg = log --oneline --decorate --all --graph
+
+	# Status
+	s = status -sb
+	st = status
+
+	# Reset
+	reh = reset --hard
+
+	# Stash
+	sa = stash apply
+	sp = stash pop
+	sl = stash list
+
