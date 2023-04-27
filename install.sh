@@ -24,8 +24,15 @@ concat_file_lines ()
 
 concat_file_lines "vim/.vimrc" "$HOME/.vimrc"
 concat_file_lines "zsh/.zshrc" "$HOME/.zshrc"
-concat_file_lines "zsh/.aliases" "$HOME/.aliases"
+concat_file_lines "aliases/.aliases" "$HOME/.aliases"
 concat_file_lines "git/.gitconfig" "$HOME/.gitconfig"
 
 grep -qF "$goconfAlias" "$HOME/.aliases" || echo "$goconfAlias" >> "$HOME/.aliases"
+
+if [[ $1 == "all" ]]
+then
+	concat_file_lines "aliases/nvim/.aliases" "$HOME/.aliases"
+	concat_file_lines "aliases/bat/.aliases" "$HOME/.aliases"
+	concat_file_lines "aliases/tree/.aliases" "$HOME/.aliases"
+fi
 
