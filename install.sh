@@ -3,6 +3,11 @@
 currentDir=$(pwd)
 goconfAlias="alias goconf='cd $currentDir'"
 
+touch $HOME/.vimrc
+touch $HOME/.zshrc
+touch $HOME/.aliases
+touch $HOME/.gitconfig
+
 mkdir -p $HOME/.config
 mkdir -p $HOME/.warp/workflows
 
