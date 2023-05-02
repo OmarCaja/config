@@ -1,2 +1,0 @@
-alias treeg='tree -a -I .git'
-

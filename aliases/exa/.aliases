@@ -1,0 +1,7 @@
+alias ls='exa --icons'
+alias ll='exa -1 --icons'
+alias la='exa -1 -a --icons'
+alias t='exa -T --icons'
+alias ta='exa -T -a --icons'
+alias tg='exa -T -a -l --git --no-permissions --no-filesize --no-user --no-time -I .git --icons'
+
