@@ -100,7 +100,6 @@ install_aliases()
 {
 	args=($@)
 
-
 	install_aliases_config
 	install_config_proyect_alias
 
