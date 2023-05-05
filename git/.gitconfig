@@ -10,6 +10,7 @@
 	bd = branch -d
 	bdf = branch -D
 	bdr = "!f() { git push origin :$1; }; f"
+	brnm = branch -m
 	
 	# Add files
 	aa = add --all
