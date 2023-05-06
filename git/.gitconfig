@@ -1,3 +1,6 @@
+[push]
+	autoSetupRemote = true
+
 [alias]
 	# Checkout
 	co = checkout
@@ -7,10 +10,10 @@
 	b = branch -v
 	br = branch -r
 	ba = branch -a
-	bd = branch -d
-	bdf = branch -D
-	bdr = "!f() { git push origin :$1; }; f"
-	brnm = branch -m
+	bdl = branch -d
+	bdlf = branch -D
+	bdr = push origin --delete
+	brn = !git branch -m $1 && git branch --unset-upstream
 	
 	# Add files
 	aa = add --all
@@ -57,4 +60,7 @@
 	sa = stash apply
 	sp = stash pop
 	sl = stash list
+
+	# Diff
+	df = diff --color-words
 
