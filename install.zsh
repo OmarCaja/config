@@ -2,7 +2,7 @@
 
 current_dir=$(pwd)
 goconf_alias="alias goconf='cd $current_dir'"
-valid_aliases_args=(bat exa git nvim)
+valid_aliases_args=(bat exa git nvim zsh)
 
 help()
 {
@@ -39,10 +39,7 @@ help()
 
 concat_file_lines () 
 {
-	IFS=''
-	while read line; do
-		grep -qF "$line" $2 || echo "$line" >> $2
-	done < $1
+	grep -qF $1 $2 || echo $1 >> $2
 }
 
 install_starship_config()
@@ -60,19 +57,12 @@ install_warp_workflows()
 install_gitconfig()
 {
 	touch $HOME/.gitconfig
-	concat_file_lines "git/.gitconfig" "$HOME/.gitconfig"
-}
 
-install_config_proyect_alias()
-{
-	grep -qF "$goconf_alias" "$HOME/.aliases" || echo "$goconf_alias" >> "$HOME/.aliases"
-}
-
-install_aliases_config()
-{
-	touch $HOME/.zshrc
-	concat_file_lines "aliases/.zshrc" "$HOME/.zshrc"
-	touch $HOME/.aliases
+	if ! grep -qF $1 "$HOME/.gitconfig"
+	then
+		echo "[include]" >> "$HOME/.gitconfig"
+		echo $1 >> "$HOME/.gitconfig"
+	fi
 }
 
 check_aliases_args()
@@ -100,12 +90,16 @@ install_aliases()
 {
 	args=($@)
 
-	install_aliases_config
-	install_config_proyect_alias
+	touch $HOME/.zshrc
 
 	for arg in $args
 	do
-		concat_file_lines "aliases/$arg/.aliases" "$HOME/.aliases"
+		concat_file_lines "# $arg aliases" "$HOME/.zshrc"
+		concat_file_lines "[[ -s \"$current_dir/aliases/$arg/.aliases\" ]] && source \"$current_dir/aliases/$arg/.aliases\"" "$HOME/.zshrc"
+		if [[ $arg = nvim ]]
+		then
+			install_gitconfig "    path = $current_dir/git/nvim/.gitconfig"
+		fi	
 	done
 }
 
@@ -116,8 +110,8 @@ while getopts ":hgswfa:" option; do
 		exit;;
 
 		f)
-		install_aliases $valid_aliases_args[@]
-		install_gitconfig
+		install_aliases $valid_aliases_args
+		install_gitconfig "    path = $current_dir/git/.gitconfig"
 		install_starship_config
 		install_warp_workflows
 		exit;;
@@ -129,7 +123,7 @@ while getopts ":hgswfa:" option; do
 		exit;;
 
 		g)
-		install_gitconfig
+		install_gitconfig "$current_dir/git/.gitconfig"
 		exit;;
 
 		s)

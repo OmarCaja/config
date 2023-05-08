@@ -1,6 +1,7 @@
+[init]
+	defaultBranch = main
 [push]
 	autoSetupRemote = true
-
 [alias]
 	# Checkout
 	co = checkout
