@@ -1,3 +1,4 @@
 alias ..='cd..'
-alias touch='to'
+alias to='touch'
+alias md='mkdir'
 
