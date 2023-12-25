@@ -2,6 +2,13 @@ command_timeout = 10000
 
 add_newline = true
 
+palette = 'custom'
+[palettes.custom]
+blue = '6'
+pink = '13'
+yellow = '11'
+purple = '4'
+
 format = """
 $username\
 $hostname\
@@ -84,12 +91,12 @@ $character"""
 disabled = true
 
 [directory]
-style = 'bold purple'
+style = 'bold pink'
 truncate_to_repo = false
 truncation_length = 6
 
 [git_branch]
-style = 'bold #bd93f9'
+style = 'bold purple'
 symbol = " "
 
 [git_commit]
@@ -118,7 +125,6 @@ disabled = true
 [custom.gittag]
 command = "git tag --points-at HEAD"
 when = """ test "$(git tag --points-at HEAD)" != "" """
-style = "bold green"
-symbol = "笠"
+style = "bold blue"
+symbol = "󰓹 "
 format = '[$symbol$output]($style) '
-

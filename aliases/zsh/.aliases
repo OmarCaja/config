@@ -1,4 +1,3 @@
 alias ..='cd ..'
 alias to='touch'
 alias md='mkdir'
-
