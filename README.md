@@ -1,6 +1,6 @@
 # :rocket: Custom config files for spedding up.
 
-## :info: Prerequisites:
+## :warning: Prerequisites:
 
 [Homebrew](https://brew.sh/)
 
