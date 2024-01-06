@@ -1,19 +1,20 @@
 # :rocket: Custom config files for spedding up.
 
-## :warning: Prerequisites:
-
-- [Homebrew](https://brew.sh/)
-- [Bash](https://formulae.brew.sh/formula/bash)
-
-```shell
-brew install bash
-```
-
-- [Gum](https://github.com/charmbracelet/gum)
-
-```shell
-brew install gum
-```
+> [!WARNING]
+> Prerequisites
+>
+> - [Homebrew](https://brew.sh/)
+> - [Bash](https://formulae.brew.sh/formula/bash)
+>
+> ```shell
+> brew install bash
+> ```
+>
+> - [Gum](https://github.com/charmbracelet/gum)
+>
+> ```shell
+> brew install gum
+> ```
 
 ## :wrench: Installation.
 
