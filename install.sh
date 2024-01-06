@@ -58,12 +58,12 @@ brew_install_app() {
 		echo
 		gum spin -s dot --show-output --title "Installing ${APPS_NAME[$1]} " brew install "$1"
 		echo
-		echo "${APPS_NAME[$1]} installed successfully"
+		echo "${APPS_NAME[$1]} installed successfully."
 		echo
 
 	else
 
-		echo "${APPS_NAME[$1]} is currently installed"
+		echo "${APPS_NAME[$1]} is currently installed."
 		echo
 	fi
 }
