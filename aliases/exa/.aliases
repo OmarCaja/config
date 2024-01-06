@@ -4,4 +4,3 @@ alias la='exa -1 -a --icons'
 alias t='exa -T --icons'
 alias ta='exa -T -a --icons'
 alias tg='exa -T -a -l --git --git-ignore --no-permissions --no-filesize --no-user --no-time -I=".git" --icons'
-

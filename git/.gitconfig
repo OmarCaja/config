@@ -1,67 +1,66 @@
 [init]
-	defaultBranch = main
+defaultBranch = main
 [push]
-	autoSetupRemote = true
+autoSetupRemote = true
 [alias]
-	# Checkout
-	co = checkout
-	nb = checkout -b
+# Checkout
+co = checkout
+nb = checkout -b
 
-	# Branches
-	b = branch -v
-	br = branch -r
-	ba = branch -a
-	bdl = branch -d
-	bdlf = branch -D
-	bdr = push origin --delete
-	brn = !git branch -m $1 && git branch --unset-upstream
-	
-	# Add files
-	aa = add --all
+# Branches
+b = branch -v
+br = branch -r
+ba = branch -a
+bdl = branch -d
+bdlf = branch -D
+bdr = push origin --delete
+brn = !git branch -m $1 && git branch --unset-upstream
 
-	# Commit
-	cm = commit -m
-	cam = !git add --all && git commit -m
-	amend = commit --amend
-	append = !git add --all && git commit --amend
+# Add files
+aa = add --all
 
-	# Fetch
-	f = fetch
+# Commit
+cm = commit -m
+cam = !git add --all && git commit -m
+amend = commit --amend
+append = !git add --all && git commit --amend
 
-	# Push
-	ps = push
-	psf = push -f
-	psfl = push --force-with-lease
+# Fetch
+f = fetch
 
-	# Pull
-	pl = pull
+# Push
+ps = push
+psf = push -f
+psfl = push --force-with-lease
 
-	# Merge
-	m = merge
-	ma = merge --abort
-	mc = merge --continue
+# Pull
+pl = pull
 
-	# Rebase
-	reb = rebase
-	reba = rebase --abort
-	rebc = rebase --continue
-	rebo = rebase --onto
+# Merge
+m = merge
+ma = merge --abort
+mc = merge --continue
 
-	# Logs
-	lgg = log --oneline --decorate --all --graph
+# Rebase
+reb = rebase
+reba = rebase --abort
+rebc = rebase --continue
+rebo = rebase --onto
 
-	# Status
-	s = status -sb
-	st = status
+# Logs
+lgg = log --oneline --decorate --all --graph
 
-	# Reset
-	reh = reset --hard
+# Status
+s = status -sb
+st = status
 
-	# Stash
-	sa = stash apply
-	sp = stash pop
-	sl = stash list
+# Reset
+reh = reset --hard
 
-	# Diff
-	df = diff --color-words
+# Stash
+sa = stash apply
+sp = stash pop
+sl = stash list
 
+# Diff
+df = diff --color-words
