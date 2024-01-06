@@ -2,15 +2,18 @@
 
 ## :warning: Prerequisites:
 
-[Homebrew](https://brew.sh/)
+- [Homebrew](https://brew.sh/)
+- [Bash](https://formulae.brew.sh/formula/bash)
 
-[Bash](https://formulae.brew.sh/formula/bash)
+```shell
+brew install bash
+```
 
-`brew install bash`
+- [Gum](https://github.com/charmbracelet/gum)
 
-[Gum](https://github.com/charmbracelet/gum)
-
-`brew install gum`
+```shell
+brew install gum
+```
 
 ## :wrench: Installation.
 
