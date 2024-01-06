@@ -17,8 +17,8 @@ install_sh_aliases() {
 
 	concatenate_lines_in_file "# sh aliases" "$HOME/.zshrc"
 	concatenate_lines_in_file "[[ -s \"$CURRENT_DIR/aliases/sh/.aliases\" ]] && source \"$CURRENT_DIR/aliases/sh/.aliases\"" "$HOME/.zshrc"
-	echo "Custom aliases installed."
-	gum pager <aliases/sh/.aliases
+	echo "Custom aliases installed:"
+	cat aliases/sh/.aliases
 }
 
 install_starship() {
