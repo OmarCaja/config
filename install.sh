@@ -29,10 +29,24 @@ install_starship() {
 
 install_gitconfig() {
 
-	if ! grep -qF "$1" "$HOME/.gitconfig"; then
-		echo "[include]" >>"$HOME/.gitconfig"
-		echo "$1" >>"$HOME/.gitconfig"
-	fi
+	nvim_gitconfig="path = $CURRENT_DIR/git/nvim/.gitconfig"
+	git_gitconfig="path = $CURRENT_DIR/git/.gitconfig"
+
+	for gitConfig in "${GIT_CONFIG[@]}"; do
+		if [ "$app" = "$gitConfig" ]; then
+			if [ "$app" = nvim ]; then
+				if ! grep -qF "$nvim_gitconfig" "$HOME/.gitconfig"; then
+					echo "[include]" >>"$HOME/.gitconfig"
+					echo "$nvim_gitconfig" >>"$HOME/.gitconfig"
+				fi
+			else
+				if ! grep -qF "$git_gitconfig" "$HOME/.gitconfig"; then
+					echo "[include]" >>"$HOME/.gitconfig"
+					echo "$git_gitconfig" >>"$HOME/.gitconfig"
+				fi
+			fi
+		fi
+	done
 }
 
 concatenate_lines_in_file() {
@@ -42,12 +56,16 @@ concatenate_lines_in_file() {
 
 install_aliases() {
 
-	concatenate_lines_in_file "# $1 aliases" "$HOME/.zshrc"
-	concatenate_lines_in_file "[[ -s \"$CURRENT_DIR/aliases/$1/.aliases\" ]] && source \"$CURRENT_DIR/aliases/$1/.aliases\"" "$HOME/.zshrc"
+	for alias in "${ALIASES[@]}"; do
+		if [ "$app" = "$alias" ]; then
+			concatenate_lines_in_file "# $1 aliases" "$HOME/.zshrc"
+			concatenate_lines_in_file "[[ -s \"$CURRENT_DIR/aliases/$1/.aliases\" ]] && source \"$CURRENT_DIR/aliases/$1/.aliases\"" "$HOME/.zshrc"
 
-	if [[ $1 = nvim ]]; then
-		install_gitconfig "path = $CURRENT_DIR/git/nvim/.gitconfig"
-	fi
+			if [[ $1 = nvim ]]; then
+				install_gitconfig "path = $CURRENT_DIR/git/nvim/.gitconfig"
+			fi
+		fi
+	done
 }
 
 brew_install_app() {
@@ -82,21 +100,8 @@ install_apps() {
 		if [ "$app" = starship ]; then
 			install_starship
 		else
-			for alias in "${ALIASES[@]}"; do
-				if [ "$app" = "$alias" ]; then
-					install_aliases "$app"
-				fi
-			done
-			for gitConfig in "${GIT_CONFIG[@]}"; do
-				if [ "$app" = "$gitConfig" ]; then
-					if [ "$app" = nvim ]; then
-						install_gitconfig "path = $CURRENT_DIR/git/nvim/.gitconfig"
-
-					else
-						install_gitconfig "path = $CURRENT_DIR/git/.gitconfig"
-					fi
-				fi
-			done
+			install_aliases "$app"
+			install_gitconfig "$app"
 		fi
 	done
 }
