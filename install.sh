@@ -17,6 +17,8 @@ install_sh_aliases() {
 
 	concatenate_lines_in_file "# sh aliases" "$HOME/.zshrc"
 	concatenate_lines_in_file "[[ -s \"$CURRENT_DIR/aliases/sh/.aliases\" ]] && source \"$CURRENT_DIR/aliases/sh/.aliases\"" "$HOME/.zshrc"
+	echo "Custom aliases installed."
+	gum pager <aliases/sh/.aliases
 }
 
 install_starship() {
@@ -68,7 +70,7 @@ brew_install_app() {
 
 install_apps() {
 
-	echo Choose other apps you want to install.
+	echo Choose apps you want to install.
 	echo Press space to select between options and press enter to confirm.
 	echo
 
@@ -106,4 +108,4 @@ mkdir -p "$HOME/.config"
 install_apps
 
 gum pager <aliases/sh/.aliases
-gum confirm "Do you want to install the previous aliases?" && install_sh_aliases || echo "Custom aliases not installed"
+gum confirm "Do you want to install the previous aliases?" && install_sh_aliases || echo "Custom aliases not installed."
