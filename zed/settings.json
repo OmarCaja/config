@@ -30,5 +30,8 @@
   "terminal": {
     "font_family": "Hack Nerd Font Mono"
   },
-  "base_keymap": "JetBrains"
+  "base_keymap": "JetBrains",
+  "preview_tabs": {
+    "enabled": false
+  }
 }

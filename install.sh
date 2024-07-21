@@ -76,6 +76,11 @@ brew_install_app() {
   fi
 }
 
+copy_zed_config() {
+
+  cp -rf "zed/settings.json" "$HOME/.config/zed/"
+}
+
 install_apps() {
 
   echo Choose apps you want to install.
@@ -89,6 +94,8 @@ install_apps() {
     brew_install_app "$app"
     if [ "$app" = starship ]; then
       install_starship
+    elif ["$app" = zed ]; then
+      copy_zed_config
     else
       install_aliases "$app"
       install_gitconfig "$app"
@@ -104,3 +111,4 @@ install_apps
 
 gum pager <aliases/sh/.aliases
 gum confirm "Do you want to install the previous aliases?" && install_sh_aliases || echo "Custom aliases not installed."
+gum confirm "Do you want to update zed config?" && copy_zed_config || echo "Zed not updated."
