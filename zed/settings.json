@@ -1,0 +1,34 @@
+// Zed settings
+//
+// For information on how to configure Zed, see the Zed
+// documentation: https://zed.dev/docs/configuring-zed
+//
+// To see all of Zed's default settings without changing your
+// custom settings, run the `open default settings` command
+// from the command palette or from `Zed` application menu.
+{
+  "autosave": "on_focus_change",
+  "soft_wrap": "none",
+  "assistant": {
+    "version": "1",
+    "enabled": false
+  },
+  "chat_panel": {
+    "button": false
+  },
+  "features": {
+    "inline_completion_provider": "none"
+  },
+  "ui_font_size": 16,
+  "buffer_font_size": 16,
+  "buffer_font_family": "Hack Nerd Font Mono",
+  "theme": {
+    "mode": "system",
+    "light": "One Light",
+    "dark": "Catppuccin Macchiato"
+  },
+  "terminal": {
+    "font_family": "Hack Nerd Font Mono"
+  },
+  "base_keymap": "JetBrains"
+}

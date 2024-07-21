@@ -1,0 +1,6 @@
+alias ls='eza --icons'
+alias ll='eza -1 --icons'
+alias la='eza -1 -a --icons'
+alias t='eza -T --icons'
+alias ta='eza -T -a --icons'
+alias tg='eza -T -a -l --git --git-ignore --no-permissions --no-filesize --no-user --no-time -I=".git" --icons'
