@@ -48,7 +48,7 @@ rebc = rebase --continue
 rebo = rebase --onto
 
 # Logs
-lgg = log --oneline --decorate --all --graph
+lg = log --oneline --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold cyan)%ah%C(reset)%C(auto)%d%C(reset) - %C(white)%s%C(reset) %C(dim white)- %an%C(reset)'
 
 # Status
 s = status -sb

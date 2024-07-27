@@ -33,5 +33,6 @@
   "base_keymap": "JetBrains",
   "preview_tabs": {
     "enabled": false
-  }
+  },
+  "format_on_save": "on"
 }
