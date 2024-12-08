@@ -6,12 +6,11 @@ CURRENT_DIR=$(pwd)
 declare -A APPS_NAME=(
     [bat]=$(gum style --foreground "$PINK" "bat")
     [eza]=$(gum style --foreground "$PINK" "eza")
-    [nvim]=$(gum style --foreground "$PINK" "nvim")
     [starship]=$(gum style --foreground "$PINK" "starship")
     [git]=$(gum style --foreground "$PINK" "git")
     [zed]=$(gum style --foreground "$PINK" "zed")
 )
-declare -a ALIASES=("bat" "eza" "nvim" "git")
+declare -a ALIASES=("bat" "eza" "git")
 
 install_sh_aliases() {
 
