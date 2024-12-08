@@ -9,6 +9,7 @@ declare -A APPS_NAME=(
     [starship]=$(gum style --foreground "$PINK" "starship")
     [git]=$(gum style --foreground "$PINK" "git")
     [zed]=$(gum style --foreground "$PINK" "zed")
+    [hnd]=$(gum style --foreground "$PINK" "font-hack-nerd-font")
 )
 declare -a ALIASES=("bat" "eza" "git")
 
