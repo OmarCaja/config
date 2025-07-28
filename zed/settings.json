@@ -7,17 +7,18 @@
 // custom settings, run the `open default settings` command
 // from the command palette or from `Zed` application menu.
 {
+  "features": {
+    "edit_prediction_provider": "none"
+  },
+  "git": {
+    "inline_blame": {
+      "enabled": false
+    }
+  },
   "autosave": "on_focus_change",
   "soft_wrap": "none",
-  "assistant": {
-    "version": "1",
-    "enabled": false
-  },
   "chat_panel": {
-    "button": false
-  },
-  "features": {
-    "inline_completion_provider": "none"
+    "button": "never"
   },
   "ui_font_size": 16,
   "buffer_font_size": 16,
