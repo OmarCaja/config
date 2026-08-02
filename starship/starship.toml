@@ -27,18 +27,18 @@ truncation_length = 6
 truncation_symbol = "…/"
 
 [git_branch]
-symbol = ""
+symbol = ""
 style = "bg:green"
 format = '[[ $symbol $branch ](fg:bold crust bg:green)]($style)'
 
 [git_commit]
 style = "bg:green"
 only_detached = false
-format = '[[ $hash ](fg:bold crust bg:green)]($style)'
+format = '[[ $hash ](fg:bold crust bg:green)]($style)'
 
 [git_status]
 style = "bg:yellow"
-format = '[[($all_status$ahead_behind )](fg:bold crust bg:green)]($style)'
+format = '[[($all_status$ahead_behind)](fg:bold crust bg:green)]($style)'
 untracked = '?${count} '
 staged = '+${count} '
 modified = '!${count} '
@@ -51,16 +51,16 @@ behind = '⇣${count} '
 
 [custom.gittag]
 command = "git tag --points-at HEAD"
-when = """ test "$(git tag --points-at HEAD)" != "" """
+when = "git describe --tags --exact-match"
 style = "bg:green"
-symbol = "󰓹"
+symbol = ""
 format = '[[$symbol $output ](fg:bold crust bg:green)]($style)'
 
 [time]
 disabled = false
 time_format = "%R"
 style = "bg:lavender"
-format = '[[  $time ](fg:bold crust bg:lavender)]($style)'
+format = '[[  $time ](fg:bold crust bg:lavender)]($style)'
 
 [line_break]
 disabled = true
