@@ -1,4 +1,4 @@
-#!/usr/local/Cellar/bash/5.2.26/bin/bash
+#!/usr/bin/env bash
 
 PINK="13"
 CURRENT_DIR=$(pwd)
@@ -9,7 +9,8 @@ declare -A APPS_NAME=(
     [starship]=$(gum style --foreground "$PINK" "starship")
     [git]=$(gum style --foreground "$PINK" "git")
     [zed]=$(gum style --foreground "$PINK" "zed")
-    [hnd]=$(gum style --foreground "$PINK" "font-hack-nerd-font")
+    [opencode-desktop]=$(gum style --foreground "$PINK" "opencode-desktop")
+    [font-hack-nerd-font]=$(gum style --foreground "$PINK" "font-hack-nerd-font")
 )
 declare -a ALIASES=("bat" "eza" "git")
 
@@ -24,7 +25,7 @@ install_sh_aliases() {
 install_starship() {
 
     concatenate_lines_in_file "eval \"$(starship init zsh)\"" "$HOME/.zshrc"
-    cp -rf "starship/starship.toml" "$HOME/.config/starship.toml"
+    mkdir -p "$HOME/.config" && ln -sf "$CURRENT_DIR/starship/starship.toml" "$HOME/.config/starship.toml"
 }
 
 install_gitconfig() {
@@ -56,7 +57,12 @@ install_aliases() {
 
 brew_install_app() {
 
-    if ! command -v "$1" >/dev/null 2>&1; then
+    if command -v "$1" >/dev/null 2>&1 || brew list --cask "$1" &>/dev/null; then
+
+        echo "${APPS_NAME[$1]} is currently installed."
+        echo
+
+    else
 
         echo "${APPS_NAME[$1]} is not installed."
         echo
@@ -65,22 +71,20 @@ brew_install_app() {
         echo "${APPS_NAME[$1]} installed successfully."
         echo
 
-    else
-
-        echo "${APPS_NAME[$1]} is currently installed."
-        echo
     fi
 }
 
 copy_zed_config() {
 
-    cp -rf "zed/settings.json" "$HOME/.config/zed/"
+    mkdir -p "$HOME/.config/zed" && ln -sf "$CURRENT_DIR/zed/settings.json" "$HOME/.config/zed/settings.json"
 }
 
-check_if_install_vimrc() {
+install_opencode_config() {
 
-    grep -qF "source $CURRENT_DIR/vim/.vimrc" "$HOME/.vimrc" || gum confirm "Do you want to install vimrc config?" && install_vimrc_config || echo "vimrc config not installed."
+    mkdir -p "$HOME/.config/opencode" && ln -sf "$CURRENT_DIR/opencode/opencode.json" "$HOME/.config/opencode/opencode.json"
 }
+
+
 
 install_vimrc_config() {
 
@@ -97,13 +101,19 @@ install_apps() {
 
     # shellcheck disable=SC2068
     for app in ${apps[@]}; do
-        brew_install_app "$app"
+        if [ "$app" != font-hack-nerd-font ]; then
+            brew_install_app "$app"
+        else
+            brew list --cask font-hack-nerd-font &>/dev/null || brew install --cask font-hack-nerd-font
+        fi
         install_aliases "$app"
         install_gitconfig "$app"
         if [ "$app" = starship ]; then
             install_starship
         elif [ "$app" = zed ]; then
             copy_zed_config
+        elif [ "$app" = opencode-desktop ]; then
+            install_opencode_config
         fi
     done
 }
@@ -114,8 +124,8 @@ touch "$HOME/.vimrc"
 mkdir -p "$HOME/.config"
 
 install_apps
-check_if_install_vimrc
+
+grep -qF "source $CURRENT_DIR/vim/.vimrc" "$HOME/.vimrc" || gum confirm "Do you want to install vimrc config?" && install_vimrc_config || echo "vimrc config not installed."
 
 gum pager <aliases/sh/.aliases
 gum confirm "Do you want to install the previous aliases?" && install_sh_aliases || echo "Custom aliases not installed."
-gum confirm "Do you want to update zed config?" && copy_zed_config || echo "Zed not updated."
