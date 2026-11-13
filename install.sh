@@ -108,7 +108,7 @@ install_vimrc_config() {
 install_apps() {
 
     echo "Choose apps you want to install."
-    echo "Press space to select between options and press enter to confirm."
+    echo "Press x to select between options and press enter to confirm."
     echo
 
     apps=$(gum choose --no-limit "${APPS_NAME[@]}")
