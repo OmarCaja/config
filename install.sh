@@ -146,5 +146,5 @@ ensure_git_identity
 
 gum confirm "Do you want to install vimrc config?" && install_vimrc_config || echo "vimrc config not installed."
 
-gum pager <"$CURRENT_DIR/aliases/sh/.aliases"
+gum format -t code -l sh <"$CURRENT_DIR/aliases/sh/.aliases"
 gum confirm "Do you want to install the previous aliases?" && install_sh_aliases || echo "Custom aliases not installed."
